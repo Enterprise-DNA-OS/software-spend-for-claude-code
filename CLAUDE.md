@@ -22,9 +22,39 @@ Fill this in once. A worker with context knows. A worker without it guesses.
 
 | When the operator asks for... | Use this |
 |---|---|
-| <!-- TODO(author): one row per slash command --> | `/...` |
+| `/applications` | Read the software register and accountable owners |
+| `/contracts` | Read original contract values and source records |
+| `/assignments` | Read recorded licence assignments |
+| `/expenses` | Read invoice records in their original currency |
+| `/renewals` | Review contract ends and notice dates |
+| `/notice-deadlines` | Prepare the next renewal decisions before notice is due |
+| `/licence-review` | Compare purchased and recorded seats with evidence freshness |
+| `/inactive-seats` | Review inactivity candidates supported by recent observations |
+| `/stale-usage` | Find usage observations that need refreshing |
+| `/category-overlap` | Find overlapping tools to discuss with their owners |
+| `/spend-review` | Review recorded spend by application and currency |
+| `/commitments` | Read whole-term commitments without mixing currencies |
+| `/owner-workload` | See which owner has the most upcoming decisions |
+| `/decisions` | Read renewal recommendations and check contract versions |
+| `/attention` | Find missing, overdue and inconsistent records |
+| `/compliance` | Check privacy and local record evidence |
+| `/history` | Read attributed changes |
+| `/show` | Read one record and its change history |
+| `/add` | Add an application, contract, assignment or invoice |
+| `/update` | Update a record with attributed evidence |
+| `/log` | Record an owner conversation on an application |
+| `/record-usage` | Record dated usage observations from a checked source |
+| `/record-decision` | Record a reviewed renewal recommendation without contacting the vendor |
+| `/import` | Rehearse and load the Torii contract export |
+| `/export` | Export all records, notes, decisions and history |
+| `/weekly-review` | Draft the Monday renewal, licence and evidence review |
+| `/draft-renewal-brief` | Draft contract deadlines, commitments and overlap questions |
+| `/draft-access-review` | Draft inactive seats, stale observations and review evidence |
+| `/help` | Read supported commands and editable fields |
+| `/customise` | Change a field or rule with a tested migration |
+| `/new-view` | Add a branded read-only report |
 
-If an ask fits nothing here, run the CLI directly (`npm run <cli> -- --help`) and then propose a new command for it.
+If an ask fits nothing here, run the CLI directly (`npm run spend -- help`) and then propose a new command for it.
 
 ## Hard rules
 
@@ -41,3 +71,7 @@ If an ask fits nothing here, run the CLI directly (`npm run <cli> -- --help`) an
 - `docs/` the thesis and the guide for moving off Torii.
 
 Built by Enterprise DNA. Installed and run for you as part of Omni: https://enterprisedna.co/omni/instead-of/torii
+
+## Software spend boundaries
+
+Read docs/compliance.md before changing rules. This register works from dated evidence and cannot discover or change vendor accounts. Actor and approver names are audit labels, not authentication. Never interpret unassigned seats as confirmed savings. Keep original currencies separate. Documents and weekly reviews remain drafts.

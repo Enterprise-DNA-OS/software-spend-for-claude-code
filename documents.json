@@ -1,11 +1,40 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
+    "name": "renewal-brief",
+    "title": "Draft software renewal brief",
+    "for_each": "select id,name from contracts where status='active'",
     "file": "name",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Contract and deadline",
+        "sql": "select application,name,owner,notice_date,end_date,contract_value,currency,evidence from renewal_calendar where id=$1"
+      },
+      {
+        "title": "Recorded decisions",
+        "sql": "select d.decision,d.rationale,d.actor,d.approver,d.evidence,d.created_at,(d.contract_snapshot->>'version')::integer=c.version current_contract_version from decisions d join contracts c on c.id=d.contract_id where contract_id=$1 order by d.created_at",
+        "note": "These are internal records. Confirm the current contract version before acting; nothing has been sent to the vendor."
+      },
+      {
+        "title": "Licence evidence",
+        "sql": "select p.* from licence_position p join contracts c on c.application_id=p.id where c.id=$1"
+      }
+    ]
+  },
+  {
+    "name": "access-review",
+    "title": "Draft application access review",
+    "for_each": "select id,name from applications where status='active'",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Review owner and dates",
+        "sql": "select name,owner,personal_data,security_review_due,retention_review_due,evidence from applications where id=$1"
+      },
+      {
+        "title": "Recorded assignments",
+        "sql": "select name,status,last_used_on,observed_on,review_due,evidence from assignments where application_id=$1 order by name",
+        "note": "A stale observation is not evidence of inactivity. A removed status records an external action and does not revoke access."
+      }
     ]
   }
 ]

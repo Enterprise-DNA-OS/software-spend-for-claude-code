@@ -1,0 +1,3 @@
+sep=,
+Contract name,Application name,Status,Start date,End date,Notice period (days),Contract value,Contract currency,Purchased seats,Owner,Contract URL,Internal tag
+Example annual,Example Design,Active,2026-01-01,2026-12-31,30,3600.00,NZD,10,Hana,Archive/example.pdf,Demonstration only
